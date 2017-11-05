@@ -47,6 +47,10 @@ public class PersonEditActivity extends AppCompatActivity implements View.OnClic
 
         check = new int[66]; //массив для все галочки аватаров выкл
 
+        editTextAge = (EditText) findViewById(R.id.edittext_age);
+        //ограничение ввода возраста - от 0 до 90
+        editTextAge.setFilters(new InputFilter[]{new InputFilterMinMax(0, 90)});
+
         ava = (ImageView) findViewById(R.id.imageview_ava);
         ava.setImageResource(R.drawable.avatars_man);
         ava.setOnClickListener(this);
@@ -134,9 +138,7 @@ public class PersonEditActivity extends AppCompatActivity implements View.OnClic
             //обработка нажатия на ОК, сохранить персону и передать ее в активити создания поездки
             case (R.id.btn_ok_person):
                 editTextName = (EditText) findViewById(R.id.edittext_name);
-                editTextAge = (EditText) findViewById(R.id.edittext_age);
-                //ограничение ввода возраста - от 0 до 90
-                editTextAge.setFilters(new InputFilter[]{new InputFilterMinMax(0, 90)});
+
 
                 String name = editTextName.getText().toString();
                 String age = editTextAge.getText().toString();
