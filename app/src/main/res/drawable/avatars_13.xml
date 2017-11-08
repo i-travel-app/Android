@@ -442,15 +442,15 @@
 1,2 0,3 1,6 1,9 1,-7 3,-14 4,-20l0 0c3,-8 12,-10 18,-4 14,15 29,12 29,12 -28,-11
 -38,-67 -38,-67z" />
     <path
-        android:fillColor="#000000"
+        android:fillColor="#DA8C92"
         android:pathData="M 138 311 L 134 307 L 129 312 L 125 307 L 121 311 L 125 316 L 121 320 L 125 324 L 129 319 L 134 324 L 138 320 L 133 316 Z" />
     <path
-        android:fillColor="#000000"
+        android:fillColor="#DA8C92"
         android:pathData="M 160 311 L 156 307 L 151 312 L 147 307 L 143 311 L 147 316 L 143 320 L 147 324 L 151 319 L 156 324 L 160 320 L 155 316 Z" />
     <path
-        android:fillColor="#000000"
+        android:fillColor="#DA8C92"
         android:pathData="M 182 311 L 178 307 L 174 312 L 169 307 L 165 311 L 170 316 L 165 320 L 169 324 L 174 319 L 178 324 L 182 320 L 178 316 Z" />
     <path
-        android:fillColor="#000000"
+        android:fillColor="#DA8C92"
         android:pathData="M 204 311 L 200 307 L 196 312 L 192 307 L 188 311 L 192 316 L 188 320 L 192 324 L 196 319 L 200 324 L 204 320 L 200 316 Z" />
 </vector>
