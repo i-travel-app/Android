@@ -54,5 +54,6 @@
     <string name="tab1">первая таба</string>
     <string name="tab2">вторая таба</string>
     <string name="tab3">третья таба</string>
+    <string name="cant_back">Нельзя вернуться назад</string>
 
 </resources>

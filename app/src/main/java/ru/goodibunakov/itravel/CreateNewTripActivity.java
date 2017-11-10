@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +16,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -36,9 +40,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import co.ceryle.radiorealbutton.RadioRealButton;
 import co.ceryle.radiorealbutton.RadioRealButtonGroup;
+import safety.com.br.progressimageview.ProgressImageView;
 
 public class CreateNewTripActivity extends AppCompatActivity implements View.OnFocusChangeListener {
 
@@ -53,6 +59,7 @@ public class CreateNewTripActivity extends AppCompatActivity implements View.OnF
     List<HashMap<String, String>> persons;
     RecyclerView personList;
     SharedPreferences sharedPreferences;
+    ProgressImageView progressImageView;
 
 
     @Override
@@ -79,6 +86,7 @@ public class CreateNewTripActivity extends AppCompatActivity implements View.OnF
         //кнопка "Создать поездку"
         Button createTrip = (Button) findViewById(R.id.btn_create_trip);
 
+        //ключ для гугл мест  AIzaSyCofVMoBolQ2zFk-weJio8DCqJ8Vr2BkBc
         autoCompleteTextViewCountry = (AutoCompleteTextView) findViewById(R.id.country);
         autoCompleteTextViewCity = (AutoCompleteTextView) findViewById(R.id.city);
         dateFrom = (EditText) findViewById(R.id.date_from);
@@ -123,8 +131,7 @@ public class CreateNewTripActivity extends AppCompatActivity implements View.OnF
         createTrip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(CreateNewTripActivity.this, TravelActivity.class);
-                startActivity(intent);
+                new GetGoodsAsyncTask().execute();
             }
         });
 
@@ -368,5 +375,43 @@ public class CreateNewTripActivity extends AppCompatActivity implements View.OnF
             e.printStackTrace();
         }
         return persons;
+    }
+
+    @Override
+    public void onBackPressed() {
+    }
+
+    class GetGoodsAsyncTask extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressImageView = (ProgressImageView) findViewById(R.id.progress_image_view);
+            progressImageView.showLoading().withAutoHide(false).withBorderColor(getResources().getColor(R.color.colorWhite)).withOffset(10);
+            progressImageView.setVisibility(View.VISIBLE);
+            Animation fadeInAnimation = AnimationUtils.loadAnimation(CreateNewTripActivity.this, R.anim.fade_in);
+            progressImageView.startAnimation(fadeInAnimation);
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            try {
+                TimeUnit.SECONDS.sleep(5);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+            progressImageView.hideLoading();
+            Animation fadeOutAnimation = AnimationUtils.loadAnimation(CreateNewTripActivity.this, R.anim.fade_out);
+            progressImageView.startAnimation(fadeOutAnimation);
+            progressImageView.setVisibility(View.INVISIBLE);
+            Intent intent = new Intent(CreateNewTripActivity.this, TravelActivity.class);
+            startActivity(intent);
+        }
     }
 }

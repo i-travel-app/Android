@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 
 public class TravelActivity extends AppCompatActivity {
@@ -24,7 +25,12 @@ public class TravelActivity extends AppCompatActivity {
         setUI();
     }
 
-//    @Override
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(this, getResources().getText(R.string.cant_back), Toast.LENGTH_SHORT).show();
+    }
+
+    //    @Override
 //    public boolean onOptionsItemSelected(MenuItem item) {
 //        int id = item.getItemId();
 //        if (id == R.id.action_splash) {
@@ -75,6 +81,5 @@ public class TravelActivity extends AppCompatActivity {
             public void onTabReselected(TabLayout.Tab tab) {
             }
         });
-
     }
 }
