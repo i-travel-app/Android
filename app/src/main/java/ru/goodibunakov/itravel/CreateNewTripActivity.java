@@ -60,6 +60,7 @@ public class CreateNewTripActivity extends AppCompatActivity implements View.OnF
     RecyclerView personList;
     SharedPreferences sharedPreferences;
     ProgressImageView progressImageView;
+    Button createTrip;
 
 
     @Override
@@ -84,7 +85,7 @@ public class CreateNewTripActivity extends AppCompatActivity implements View.OnF
         numberButton = (ElegantNumberButton) findViewById(R.id.elegant_number_button);
 
         //кнопка "Создать поездку"
-        Button createTrip = (Button) findViewById(R.id.btn_create_trip);
+        createTrip = (Button) findViewById(R.id.btn_create_trip);
 
         //ключ для гугл мест  AIzaSyCofVMoBolQ2zFk-weJio8DCqJ8Vr2BkBc
         autoCompleteTextViewCountry = (AutoCompleteTextView) findViewById(R.id.country);
@@ -386,7 +387,8 @@ public class CreateNewTripActivity extends AppCompatActivity implements View.OnF
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressImageView = (ProgressImageView) findViewById(R.id.progress_image_view);
+            createTrip.setEnabled(false);
+            progressImageView = findViewById(R.id.progress_image_view);
             progressImageView.showLoading().withAutoHide(false).withBorderColor(getResources().getColor(R.color.colorWhite)).withOffset(10);
             progressImageView.setVisibility(View.VISIBLE);
             Animation fadeInAnimation = AnimationUtils.loadAnimation(CreateNewTripActivity.this, R.anim.fade_in);

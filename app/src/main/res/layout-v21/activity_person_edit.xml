@@ -170,7 +170,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground"/>
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"/>
 
     </android.support.constraint.ConstraintLayout>
 

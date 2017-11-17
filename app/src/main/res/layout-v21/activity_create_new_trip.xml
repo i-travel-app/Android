@@ -366,7 +366,8 @@
                 android:background="@drawable/btn_create_trip_selector"
                 android:text="@string/btn_create_trip"
                 android:textColor="@color/colorWhite"
-                android:clickable="true"/>
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"/>
 
         </LinearLayout>
 
